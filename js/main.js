@@ -12,83 +12,7 @@ var locations = [
 ];
 var current = [ 28.4809855, 77.1082332 ]
 var map;
-function myChange(o) {
-	var r = o.value;
-	console.log(r)
-	var nelocation = [];
-	for ( var i in locations) {
-		var d = getDistance(current[0], current[1], locations[i][1],
-				locations[i][2])
-		console.log(d);
-		if (d <= r) {
-			nelocation.push(locations[i]);
-		}
-	}
-	var myOptions = {
-		center : new google.maps.LatLng(current[0], current[1]),
-		zoom : 13,
-		mapTypeId : google.maps.MapTypeId.ROADMAP,
-		title : "I am Here!",
 
-	};
-	map = new google.maps.Map(document.getElementById("default"), myOptions);
-
-	setMarkers(map, nelocation)
-}
-
-function changeCity(items) {
-	var item = items.value;
-	var position = {};
-	position.coords = {
-		latitude : 28.4809855
-	};
-	position.coords = {
-		longitude : 77.1082332
-	};
-	if (item == "Gurgaon") {
-
-		initialize(position);
-	} else {
-		var myOptions = {
-			center : new google.maps.LatLng(position.coords.latitude,
-					position.coords.longitude),
-			zoom : 13,
-			mapTypeId : google.maps.MapTypeId.ROADMAP,
-			title : "I am Here!",
-
-		};
-		map = new google.maps.Map(document.getElementById("default"), myOptions);
-		var n = [ [ 'I am here', 28.6289146, 77.2152869, 'Delhi', "olx.jpg" ] ]
-		setMarkers(map, n)
-	}
-}
-
-function changeItem(items) {
-	var item = items.value;
-	var position = {};
-	position.coords = {
-		latitude : 28.4809855
-	};
-	position.coords = {
-		longitude : 77.1082332
-	};
-	if (item == "Mobile") {
-
-		initialize(position);
-	} else {
-		var myOptions = {
-			center : new google.maps.LatLng(position.coords.latitude,
-					position.coords.longitude),
-			zoom : 13,
-			mapTypeId : google.maps.MapTypeId.ROADMAP,
-			title : "I am Here!",
-
-		};
-		map = new google.maps.Map(document.getElementById("default"), myOptions);
-		var n = [ [ 'I am here', 28.4809855, 77.1082332, 'Gurgaon', "olx.jpg" ] ]
-		setMarkers(map, n)
-	}
-}
 function init() {
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(initialize);
@@ -171,37 +95,88 @@ var getDistance = function(lat1, lng1, lat2, lng2) {
 	return d; // returns the distance in meter
 };
 
-function createJSON() {
-	var max = 100, min = 2;
-	var d = Math.random() * (max - min) + min;
-	var mobile = [ "Nokia", "Samsung", "MI", "APPLE", "SONY", "LG", "LAVA" ]
-	for (var i = 1; i < 50; i++) {
-		setDistance(28.4809855, 77.1082332, getRandom(1, 50), mobile[getRandom(
-				0, 6)], i)
+function myChange(o) {
+	var r = o.value;
+	console.log(r)
+	var nelocation = [];
+	for ( var i in locations) {
+		var d = getDistance(current[0], current[1], locations[i][1],
+				locations[i][2])
+		console.log(d);
+		if (d <= r) {
+			nelocation.push(locations[i]);
+		}
 	}
-	console.log(locations);
+	var myOptions = {
+		center : new google.maps.LatLng(current[0], current[1]),
+		zoom : 13,
+		mapTypeId : google.maps.MapTypeId.ROADMAP,
+		title : "I am Here!",
+
+	};
+	map = new google.maps.Map(document.getElementById("default"), myOptions);
+
+	setMarkers(map, nelocation)
+}
+
+function changeCity(items) {
+	var item = items.value;
+	var position = {};
+	position.coords = {
+		latitude : 28.4809855
+	};
+	position.coords = {
+		longitude : 77.1082332
+	};
+	if (item == "Gurgaon") {
+
+		initialize(position);
+	} else {
+		var myOptions = {
+			center : new google.maps.LatLng(position.coords.latitude,
+					position.coords.longitude),
+			zoom : 13,
+			mapTypeId : google.maps.MapTypeId.ROADMAP,
+			title : "I am Here!",
+
+		};
+		map = new google.maps.Map(document.getElementById("default"), myOptions);
+		var n = [ [ 'I am here', 28.6289146, 77.2152869, 'Delhi', "olx.jpg" ] ]
+		setMarkers(map, n)
+	}
+}
+
+function changeItem(items) {
+	var item = items.value;
+	var position = {};
+	position.coords = {
+		latitude : 28.4809855
+	};
+	position.coords = {
+		longitude : 77.1082332
+	};
+	if (item == "Mobile") {
+
+		initialize(position);
+	} else {
+		var myOptions = {
+			center : new google.maps.LatLng(position.coords.latitude,
+					position.coords.longitude),
+			zoom : 13,
+			mapTypeId : google.maps.MapTypeId.ROADMAP,
+			title : "I am Here!",
+
+		};
+		map = new google.maps.Map(document.getElementById("default"), myOptions);
+		var n = [ [ 'I am here', 28.4809855, 77.1082332, 'Gurgaon', "olx.jpg" ] ]
+		setMarkers(map, n)
+	}
 }
 
 function getRandom(max, min) {
 	return Math.random() * (max - min) + min;
 }
-/*
- * setDistance(28.4809855, 77.1082332, 8); setDistance(28.4809855, 77.1082332,
- * 5); setDistance(28.4809855, 77.1082332, 6); setDistance(28.4809855,
- * 77.1082332, 7);
- * 
- * function setDistance(lat1, lon1, d) { var R = 6371; var brng = 0; var LatMax;
- * brng = toRad(brng); var lat1 = toRad(lat1), lon1 = toRad(lon1); var lat2 =
- * Math.asin(Math.sin(lat1) * Math.cos(d / R) + Math.cos(lat1) Math.sin(d / R) *
- * Math.cos(brng));
- * 
- * var lon2 = lon1 + Math.atan2(Math.sin(brng) * Math.sin(d / R) *
- * Math.cos(lat1), Math.cos(d / R) - Math.sin(lat1) * Math.sin(lat2)); lon2 =
- * (lon2 + 3 * Math.PI) % (2 * Math.PI) - Math.PI; lat2 = toDeg(lat2); lon2 =
- * toDeg(lon2);
- * 
- * console.log(lat2 + "," + lon2); // alert(lat2); // alert(lon2); }
- */
+
 function toRad(Value) {
 	/** Converts numeric degrees to radians */
 	return Value * Math.PI / 180;
