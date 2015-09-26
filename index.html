@@ -1,75 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<meta name="description" content="">
-<meta name="author" content="">
-<!-- <link rel="icon" href="images/iskcon.png"> -->
-<title>Olx Map Based Listing</title>
-
-<!-- Bootstrap core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Custom styles for this template -->
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 <link href="css/style.css" rel="stylesheet">
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="http://maps.googleapis.com/maps/api/js"></script>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/angularjs.js"></script>
-<script type="text/javascript" src="js/angular-route.min.js"></script>
+<script type="text/javascript"
+	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyB1tbIAqN0XqcgTR1-FxYoVTVq6Is6lD98&sensor=false">
+	
+</script>
 <script type="text/javascript" src="js/main.js"></script>
-<style type="text/css">
-html {
-	height: 100%
-}
-
-body {
-	height: 100%;
-	margin: 0;
-	padding: 0
-}
-
-#map_canvas {
-	height: 100%
-}
-</style>
 </head>
-<body onload="initialize()">
-	<nav class="navbar navbar-default ">
-		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#bs-example-navbar-collapse-1" aria-expanded="true">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#"><b>City:Gurgaon</b></a>
-			</div>
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse"
-				id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li ng-class="{active: $route.current.activetab == 'search'}"
-						id="search" class="active"><a href="#/">Search</a></li>
-					<li ng-class="{active: $route.current.activetab == 'add'}" id="add"><a
-						href="#add">Add to list</a></li>
-				</ul>
-			</div>
-			<!-- /.navbar-collapse -->
-		</div>
-		<!-- /.container-fluid -->
-	</nav>
-	<div class="panel">
-		<div id="default" style="width: 100%; height: 100%"></div>
-	</div>
-	<!-- 
-		 -->
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<body onload="init()">
+	<b class="a">City :</b>Gurgaon
+	<br />
+	<b class="a">Change Item :</b>
+	<select onchange="myItem(this)">
+		<option value="Mobile">Mobile</option>
+		<option value="TV">TV</option>
+		<option value="Car">Car</option>
+	</select>
+	<br />
+	<b class="a">Distance (KM):</b>
+	<input class="a" type="range" name="points" min="1000" max="10000"
+		onchange="myChange(this)">
+	<br />
+	<div id="default" style="width: 100%; height: 100%" class="block"></div>
 </body>
 </html>
