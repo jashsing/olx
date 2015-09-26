@@ -36,7 +36,34 @@ function myChange(o) {
 	setMarkers(map, nelocation)
 }
 
-function myItem(items) {
+function changeCity(items) {
+	var item = items.value;
+	var position = {};
+	position.coords = {
+		latitude : 28.4809855
+	};
+	position.coords = {
+		longitude : 77.1082332
+	};
+	if (item == "Gurgaon") {
+
+		initialize(position);
+	} else {
+		var myOptions = {
+			center : new google.maps.LatLng(position.coords.latitude,
+					position.coords.longitude),
+			zoom : 13,
+			mapTypeId : google.maps.MapTypeId.ROADMAP,
+			title : "I am Here!",
+
+		};
+		map = new google.maps.Map(document.getElementById("default"), myOptions);
+		var n = [ [ 'I am here', 28.6289146, 77.2152869, 'Delhi', "olx.jpg" ] ]
+		setMarkers(map, n)
+	}
+}
+
+function changeItem(items) {
 	var item = items.value;
 	var position = {};
 	position.coords = {
@@ -58,7 +85,7 @@ function myItem(items) {
 
 		};
 		map = new google.maps.Map(document.getElementById("default"), myOptions);
-		var n = [[ 'I am here', 28.4809855, 77.1082332, 'Gurgaon', "olx.jpg"]]
+		var n = [ [ 'I am here', 28.4809855, 77.1082332, 'Gurgaon', "olx.jpg" ] ]
 		setMarkers(map, n)
 	}
 }

@@ -10,17 +10,20 @@
 <script type="text/javascript" src="js/main.js"></script>
 </head>
 <body onload="init()">
-	<b class="a">City :</b>Gurgaon
+	<b class="a">City :</b>
+	<select onchange="changeCity(this)">
+		<option value="Gurgaon">Gurgaon</option>
+		<option value="Delhi">Delhi</option>
+	</select>
 	<br />
 	<b class="a">Change Item :</b>
-	<select onchange="myItem(this)">
+	<select onchange="changeItem(this)">
 		<option value="Mobile">Mobile</option>
-		<option value="TV">TV</option>
 		<option value="Car">Car</option>
 	</select>
 	<br />
 	<b class="a">Distance (KM):</b>
-	<input class="a" type="range" name="points" min="1000" max="10000"
+	<input class="a" type="range" name="points" value="10000" min="1000" max="10000"
 		onchange="myChange(this)">
 	<br />
 	<div id="default" style="width: 100%; height: 100%" class="block"></div>
